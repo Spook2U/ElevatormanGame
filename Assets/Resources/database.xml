@@ -1,0 +1,141 @@
+﻿<!-- 
+	Sparache
+	sprache:		Definierte eine weitere Sprache. Keine Umlaute, Sonderzeichen oder Leerzeichen
+					in den <info> Tags Untertags mit dem hier definierten namen erstellen.
+
+	Kunstwerke
+	id:				Nicht ändern
+	minispiel-id	Nicht ändern	
+	position:		Zahl gibt die die Position des Bildes an. Nur Zahlen von markierten Positionen verwenden.
+	bild: 			Link zum Bild auf dem Server angeben.
+	text:		Text der von dem Aufzugman angezeigt wird, wenn der Spieler in die Nähe kommt
+	sync:		Link zum Sound, der angespielt werden soll. Ohne Dateiendung. Wenn leer, bleibt der Aufzugman stumm
+	
+	Minspiele
+	id:				Nicht ändern
+	reihenfolge:  	Bestimmt, wann welches Ereignis angezeigt wird. Beginnend bei 1
+					Wenn mehrere Minispiele die gleiche Zahl haben, dann werden deise gleichzeitig angeziegt
+	text:		Text der von dem Aufzugman angezeigt wird, wenn der Spierl in die Nähe kommt
+	sync:		Sound, der passend zum Text angespielt wird, wenn nicht vorhanden, bleibt der Aufzugman stumm
+	tipps:
+-->
+
+<data>
+	<sprachen>
+		<sprache>deutsch</sprache>
+		<sprache>englisch</sprache>
+		<sprache>niederlaendisch</sprache>
+	</sprachen>
+	<kunstwerke>
+		<kunstwerk>
+			<id>1</id>
+			<minispiel-id>1</minispiel-id>>
+			<position>1</position>
+			<bild>pic/pic1</bild>
+			<info>
+				<deutsch>
+					<text>Das hier ist unser erstes Kunstwerk. Es trägt den Namen "gelb"</text>
+					<sync></sync>
+				</deutsch>
+			</info>
+		</kunstwerk>
+		<kunstwerk>
+			<id>2</id>
+			<minispiel-id>2</minispiel-id>>
+			<position>3</position>
+			<bild>pic/pic2</bild>
+			<info>
+				<deutsch>
+					<text>Das hier ist unser drittes Kunstwerk. Es trägt den Namen "rot"</text>
+					<sync></sync>
+				</deutsch>
+			</info>
+		</kunstwerk>
+		<kunstwerk>
+			<id>3</id>
+			<minispiel-id>3</minispiel-id>>
+			<position>2</position>
+			<bild>pic/pic3</bild>
+			<info>
+				<deutsch>
+					<text>Das hier ist unser erstes Kunstwerk. Es trägt den Namen "blau"</text>
+					<sync></sync>
+				</deutsch>
+			</info>
+		</kunstwerk>
+		<kunstwerk>
+			<id>4</id>
+			<minispiel-id>4</minispiel-id>>
+			<position>4</position>
+			<bild>pic/pic4</bild>
+			<info>
+				<deutsch>
+					<text>Das hier ist unser erstes Kunstwerk. Es trägt den Namen "grün"</text>
+					<sync></sync>
+				</deutsch>
+			</info>
+		</kunstwerk>
+	</kunstwerke>
+	<minispiele>
+		<minispiel>
+			<id>1</id>
+			<reihenfolge>1</reihenfolge>
+			<info>
+				<deutsch>
+					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
+					<sync></sync>
+					<tipps>
+						<tip>Klicke auf Ok</tip>
+						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
+						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
+					</tipps>
+				</deutsch>
+			</info>
+		</minispiel>
+		<minispiel>
+			<id>2</id>
+			<reihenfolge>2</reihenfolge>
+			<info>
+				<deutsch>
+					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
+					<sync></sync>
+					<tipps>
+						<tip>Klicke auf Ok</tip>
+						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
+						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
+					</tipps>
+				</deutsch>
+			</info>
+		</minispiel>
+		<minispiel>
+			<id>3</id>
+			<reihenfolge>2</reihenfolge>
+			<info>
+				<deutsch>
+					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
+					<sync></sync>
+					<tipps>
+						<tip>Klicke auf Ok</tip>
+						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
+						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
+					</tipps>
+				</deutsch>
+			</info>
+		</minispiel>
+		<minispiel>
+			<id>4</id>
+			<reihenfolge>4</reihenfolge>
+			<info>
+				<deutsch>
+					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
+					<sync></sync>
+					<tipps>
+						<tip>Klicke auf Ok</tip>
+						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
+						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
+					</tipps>
+				</deutsch>
+			</info>
+		</minispiel>
+	</minispiele>
+</data>
