@@ -6,153 +6,141 @@ public class XMLController : MonoBehaviour
 {
 	XmlDocument xmlDoc;
 
-	XmlNodeList languages = null;
-	XmlNodeList artworks;
-	XmlNodeList games;
-
-	XmlNodeList attributes;
+	XmlNodeList languagesNode = null;
+	XmlNodeList artworksNode;
+	XmlNodeList gamesNode;
 	
+	Artwork[] artworks;
+	Games[]   games;
 
-
-	XmlNodeList dialog;
-
-	private int index;
-	private bool hasNext;
-	private string sprecher;
-	private string text;
-	private string syncro;
-	private string highlight;
-	private string input;
-	private string action;
-	private string dict;
-	private bool changeColor;
-
-	public bool HasNext() 			{ return hasNext; }
-	public string getSprecher() 	{ return sprecher; }
-	public string getText() 		{ return text; }
-	public string getAudioSource() 	{ return syncro; }
-	public string getHighlight()	{ return highlight; }
-	public string getInput()		{ return input; }
-	public string getAction()		{ return action; }
-	public string getdict()			{ return dict; }
-	public bool   getChangeColor()  { return changeColor; }
 
 
 	public void Awake()
 	{
 		LoadXml("database");
 
-		getMinispielID(1);
+//		getMinispielID(1);
+
 	}
 
 
 
-	public void LoadXml(string file)
+	private void LoadXml(string file)
 	{
 		xmlDoc = new XmlDocument();
 		
 		TextAsset xmlAsset = (TextAsset) Resources.Load(file);
 		xmlDoc.LoadXml(xmlAsset.text);
-		
-		languages = xmlDoc.GetElementsByTagName("sprachen")  .Item(0).ChildNodes;
-		artworks  = xmlDoc.GetElementsByTagName("kunstwerke").Item(0).ChildNodes;
-		games     = xmlDoc.GetElementsByTagName("minispiele").Item(0).ChildNodes;
-		
-		//index = 0;
-		//SetAttributes();
+
+		languagesNode = xmlDoc.GetElementsByTagName("sprachen")  .Item(0).ChildNodes;
+		artworksNode  = xmlDoc.GetElementsByTagName("kunstwerke").Item(0).ChildNodes;
+		gamesNode     = xmlDoc.GetElementsByTagName("minispiele").Item(0).ChildNodes;
+
+		PlayerPrefs.SetInt("LanguagesCount", getLanguages().Length);
+
+		artworks = new Artwork[artworksNode.Count];
+		for(int i = 0; i < artworksNode.Count; i++) 
+		{
+			artworks[i] = new Artwork(artworksNode.Item(i).ChildNodes);
+		}
+
+		games = new Games[gamesNode.Count];
+		for(int i = 0; i < gamesNode.Count; i++)
+		{
+			games[i] = new Games(gamesNode.Item(i).ChildNodes);
+		}
 	}
 
 	public string[] getLanguages()
 	{	
 		string[] array = null;
 
-		if(languages != null)
+		if(languagesNode != null)
 		{
-			array = new string[languages.Count];
+			array = new string[languagesNode.Count];
 
-			for(int i = 0; i < languages.Count; i++)
+			for(int i = 0; i < languagesNode.Count; i++)
 			{
-				array[i] = languages.Item(i).InnerText;
+				array[i] = languagesNode.Item(i).InnerText;
 			}
 		}
 
 		return array;
 	}
+}
 
-	
-	public int getMinispielID(int positionsID)
+class Artwork
+{
+	public int id = 0;
+	public int minispielId = 0;
+	public int position = 0;
+	public string bild = "";
+	private Info[] info;
+
+	public Artwork(XmlNodeList list)
 	{
-		bool gefunden;
-		int id = 0;
-		XmlNodeList artwork;
-			
-		for(int i = 0; i < artworks.Count; i++)
-		{
-			artwork = artworks.Item(i).ChildNodes;
+		id 			= int.Parse(list.Item(0).InnerText);
+		minispielId = int.Parse(list.Item(1).InnerText);
+		position 	= int.Parse(list.Item(2).InnerText);
+		bild		=           list.Item(3).InnerText ;
 
-			for(int j = 0; j < artwork.Count; j++)
-			{
-				if(artwork.Item(j).Name == "position")
-				{
-					if(artwork.Item(j).InnerText == positionsID)
-					{
-						gefunden = true;
-					}
-				}
-			}
+		info = new Info[PlayerPrefs.GetInt("LanguagesCount")];
+
+		for(int i = 0; i < info.Length; i++)
+		{
+			info[i] = new Info(list.Item(4).ChildNodes.Item(i).ChildNodes);
 		}
-
-		return id;
 	}
 
+	public string GetText(int sprache) { return info[sprache].text; }
+	public string GetSync(int sprache) { return info[sprache].sync; }
+}
 
+class Games
+{
+	public int id = 0;
+	public int reihenfolge = 0;
+	private Info[] info;
 
-
-	public void Next()
+	public Games(XmlNodeList list)
 	{
-		index++;
-		SetAttributes();
-	}
+		id 			= int.Parse(list.Item(0).InnerText);
+		reihenfolge = int.Parse(list.Item(1).InnerText);
 
-	private void SetAttributes()
-	{
-		hasNext = index < dialog.Count;
-		sprecher = "";
-		text = "";
-		syncro = "";
-		highlight = "";
-		input = "";
-		action = "";
-		dict = "";
-		changeColor = false;
-
-		if(hasNext)
+		info = new Info[PlayerPrefs.GetInt("LanguagesCount")];
+		
+		for(int i = 0; i < info.Length; i++)
 		{
-			attributes = dialog.Item(index).ChildNodes;
-			foreach(XmlNode node in attributes)
-			{
-				switch(node.Name)
-				{
-					case "sprecher":  sprecher = node.InnerText;    break;
-					case "text":	  text = node.InnerText; 	    break;
-					case "audio":	  syncro = node.InnerText; 	    break;
-					case "highlight": highlight = node.InnerText;   break;
-					case "input":	  input = node.InnerText; 		break;
-					case "action":	  action = node.InnerText;	    break;
-					case "dict":	  dict = node.InnerText;		break;
-					case "change":    changeColor = true;			break;
-				}
-			}
+			info[i] = new Info(list.Item(2).ChildNodes.Item(i).ChildNodes);
+		}
+	}
 
-			if(input != "")
+	public string   GetText(int sprache)  { return info[sprache].text; }
+	public string   GetSync(int sprache)  { return info[sprache].sync; }
+	public string[] GetTipps(int sprache) { return info[sprache].tipps;}
+}
+
+class Info
+{
+	public string text;
+	public string sync;
+	public string[] tipps;
+
+	public Info(XmlNodeList list)
+	{
+		text = list.Item(0).InnerText;
+		sync = list.Item(1).InnerText;
+
+		if(list.Item(2) != null)
+		{
+			XmlNodeList tippsNode = list.Item(2).ChildNodes;
+			tipps = new string[tippsNode.Count];
+
+			for(int i = 0; i < tippsNode.Count; i++)
 			{
-				Debug.Log("Wait for Input '" + input + "'");
-			}
-			if(action != "")
-			{
-				Debug.Log("Wait for Action '" + action + "'");
+				tipps[i] = tippsNode.Item(i).InnerText;
+				Debug.Log(tipps[i]);
 			}
 		}
 	}
 }
-

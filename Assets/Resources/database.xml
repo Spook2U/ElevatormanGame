@@ -1,22 +1,28 @@
 ﻿<!-- 
 	Sparache
-	sprache:		Definierte eine weitere Sprache. Keine Umlaute, Sonderzeichen oder Leerzeichen
-					in den <info> Tags Untertags mit dem hier definierten namen erstellen.
+	sprache:		- Definiert eine weitere Sprache. Keine Umlaute, Sonderzeichen oder Leerzeichen
+					- In <info> Tags, Untertags mit dem hier definierten Namen erstellen.
+					- Es muss in jedem <info> Tag ein Untertag zu jeder Sprache vorhanden sein. 
+					  Die Tags können aber leer sein
+					- Wenn ein Tag unter <sprachen> entfernt wird, ist die Sprache nicht mehr verfügbar, 
+					  Untertags von <info> werden dann ignoriert
 
+	WICHTIG: Nicht die Reihenfolge der Tags ändern
+	
 	Kunstwerke
 	id:				Nicht ändern
 	minispiel-id	Nicht ändern	
 	position:		Zahl gibt die die Position des Bildes an. Nur Zahlen von markierten Positionen verwenden.
 	bild: 			Link zum Bild auf dem Server angeben.
-	text:		Text der von dem Aufzugman angezeigt wird, wenn der Spieler in die Nähe kommt
-	sync:		Link zum Sound, der angespielt werden soll. Ohne Dateiendung. Wenn leer, bleibt der Aufzugman stumm
+	text:			Text der von dem Aufzugman angezeigt wird, wenn der Spieler in die Nähe kommt
+	sync:			Link zum Sound, der angespielt werden soll. Ohne Dateiendung. Wenn leer, bleibt der Aufzugman stumm
 	
 	Minspiele
 	id:				Nicht ändern
 	reihenfolge:  	Bestimmt, wann welches Ereignis angezeigt wird. Beginnend bei 1
 					Wenn mehrere Minispiele die gleiche Zahl haben, dann werden deise gleichzeitig angeziegt
-	text:		Text der von dem Aufzugman angezeigt wird, wenn der Spierl in die Nähe kommt
-	sync:		Sound, der passend zum Text angespielt wird, wenn nicht vorhanden, bleibt der Aufzugman stumm
+	text:			Text der von dem Aufzugman angezeigt wird, wenn der Spierl in die Nähe kommt
+	sync:			Sound, der passend zum Text angespielt wird, wenn nicht vorhanden, bleibt der Aufzugman stumm
 	tipps:
 -->
 
@@ -29,50 +35,82 @@
 	<kunstwerke>
 		<kunstwerk>
 			<id>1</id>
-			<minispiel-id>1</minispiel-id>>
+			<minispiel-id>1</minispiel-id>
 			<position>1</position>
 			<bild>pic/pic1</bild>
 			<info>
 				<deutsch>
 					<text>Das hier ist unser erstes Kunstwerk. Es trägt den Namen "gelb"</text>
-					<sync></sync>
+					<sync>Link zu Sychro 1</sync>
 				</deutsch>
+				<englisch>
+					<text>Englisch Text 1</text>
+					<sync>Englisch Sychro 1</sync>
+				</englisch>
+				<niederlaendisch>
+					<text>Niederlaendisch Text 1</text>
+					<sync>Niederlaendisch Sychro 1</sync>
+				</niederlaendisch>
 			</info>
 		</kunstwerk>
 		<kunstwerk>
 			<id>2</id>
-			<minispiel-id>2</minispiel-id>>
+			<minispiel-id>2</minispiel-id>
 			<position>3</position>
 			<bild>pic/pic2</bild>
 			<info>
 				<deutsch>
 					<text>Das hier ist unser drittes Kunstwerk. Es trägt den Namen "rot"</text>
-					<sync></sync>
+					<sync>Link zu Sychro 2</sync>
 				</deutsch>
+				<englisch>
+					<text>Englisch Text 2</text>
+					<sync>Englisch Sychro 2</sync>
+				</englisch>
+				<niederlaendisch>
+					<text>Niederlaendisch Text 2</text>
+					<sync>Niederlaendisch Sychro 2</sync>
+				</niederlaendisch>
 			</info>
 		</kunstwerk>
 		<kunstwerk>
 			<id>3</id>
-			<minispiel-id>3</minispiel-id>>
+			<minispiel-id>3</minispiel-id>
 			<position>2</position>
 			<bild>pic/pic3</bild>
 			<info>
 				<deutsch>
 					<text>Das hier ist unser erstes Kunstwerk. Es trägt den Namen "blau"</text>
-					<sync></sync>
+					<sync>Link zu Sychro 3</sync>
 				</deutsch>
+				<englisch>
+					<text>Englisch Text 3</text>
+					<sync>Englisch Sychro 3</sync>
+				</englisch>
+				<niederlaendisch>
+					<text>Niederlaendisch Text 3</text>
+					<sync>Niederlaendisch Sychro 3</sync>
+				</niederlaendisch>
 			</info>
 		</kunstwerk>
 		<kunstwerk>
 			<id>4</id>
-			<minispiel-id>4</minispiel-id>>
+			<minispiel-id>4</minispiel-id>
 			<position>4</position>
 			<bild>pic/pic4</bild>
 			<info>
 				<deutsch>
 					<text>Das hier ist unser erstes Kunstwerk. Es trägt den Namen "grün"</text>
-					<sync></sync>
+					<sync>Link zu Sychro 4</sync>
 				</deutsch>
+				<englisch>
+					<text>Englisch Text 4</text>
+					<sync>Englisch Sychro 4</sync>
+				</englisch>
+				<niederlaendisch>
+					<text>Niederlaendisch Text 4</text>
+					<sync>Niederlaendisch Sychro 4</sync>
+				</niederlaendisch>
 			</info>
 		</kunstwerk>
 	</kunstwerke>
@@ -83,13 +121,31 @@
 			<info>
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
-					<sync></sync>
+					<sync>sync</sync>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
 						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
 					</tipps>
 				</deutsch>
+				<englisch>
+					<text>e Text</text>
+					<sync>e sync</sync>
+					<tipps>
+						<tip>e Tipp 1</tip>
+						<tip>e Tipp 2</tip>
+						<tip>e Tipp 3</tip>
+					</tipps>
+				</englisch>
+				<niederlaendisch>
+					<text>n Text</text>
+					<sync>n sync</sync>
+					<tipps>
+						<tip>n Tipp 1</tip>
+						<tip>n Tipp 2</tip>
+						<tip>n Tipp 3</tip>
+					</tipps>
+				</niederlaendisch>
 			</info>
 		</minispiel>
 		<minispiel>
@@ -98,13 +154,31 @@
 			<info>
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
-					<sync></sync>
+					<sync>sync</sync>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
 						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
 					</tipps>
 				</deutsch>
+				<englisch>
+					<text>e Text</text>
+					<sync>e sync</sync>
+					<tipps>
+						<tip>e Tipp 1</tip>
+						<tip>e Tipp 2</tip>
+						<tip>e Tipp 3</tip>
+					</tipps>
+				</englisch>
+				<niederlaendisch>
+					<text>n Text</text>
+					<sync>n sync</sync>
+					<tipps>
+						<tip>n Tipp 1</tip>
+						<tip>n Tipp 2</tip>
+						<tip>n Tipp 3</tip>
+					</tipps>
+				</niederlaendisch>
 			</info>
 		</minispiel>
 		<minispiel>
@@ -113,13 +187,31 @@
 			<info>
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
-					<sync></sync>
+					<sync>sync</sync>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
 						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
 					</tipps>
 				</deutsch>
+				<englisch>
+					<text>e Text</text>
+					<sync>e sync</sync>
+					<tipps>
+						<tip>e Tipp 1</tip>
+						<tip>e Tipp 2</tip>
+						<tip>e Tipp 3</tip>
+					</tipps>
+				</englisch>
+				<niederlaendisch>
+					<text>n Text</text>
+					<sync>n sync</sync>
+					<tipps>
+						<tip>n Tipp 1</tip>
+						<tip>n Tipp 2</tip>
+						<tip>n Tipp 3</tip>
+					</tipps>
+				</niederlaendisch>
 			</info>
 		</minispiel>
 		<minispiel>
@@ -128,13 +220,31 @@
 			<info>
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
-					<sync></sync>
+					<sync>sync</sync>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
 						<tip>Guck nocheinmal genau hin. Es gibt nur einen Button. Drücke ihn. Jetzt!</tip>
 					</tipps>
 				</deutsch>
+				<englisch>
+					<text>e Text</text>
+					<sync>e sync</sync>
+					<tipps>
+						<tip>e Tipp 1</tip>
+						<tip>e Tipp 2</tip>
+						<tip>e Tipp 3</tip>
+					</tipps>
+				</englisch>
+				<niederlaendisch>
+					<text>n Text</text>
+					<sync>n sync</sync>
+					<tipps>
+						<tip>n Tipp 1</tip>
+						<tip>n Tipp 2</tip>
+						<tip>n Tipp 3</tip>
+					</tipps>
+				</niederlaendisch>
 			</info>
 		</minispiel>
 	</minispiele>
