@@ -7,10 +7,9 @@
 					- Wenn ein Tag unter <sprachen> entfernt wird, ist die Sprache nicht mehr verfügbar, 
 					  Untertags von <info> werden dann ignoriert
 
-	WICHTIG: Nicht die Reihenfolge der Tags ändern
-	
+
 	Kunstwerke
-	id:				Nicht ändern
+	id:				Wird nicht von der xml verwendet, kann benutzt werden, um Kunstwerke zu unterscheiden
 	minispiel-id	Nicht ändern	
 	position:		Zahl gibt die die Position des Bildes an. Nur Zahlen von markierten Positionen verwenden.
 	bild: 			Link zum Bild auf dem Server angeben.
@@ -35,8 +34,8 @@
 	<kunstwerke>
 		<kunstwerk>
 			<id>1</id>
-			<minispiel-id>1</minispiel-id>
 			<position>1</position>
+			<minispiel-id>1</minispiel-id>
 			<bild>pic/pic1</bild>
 			<info>
 				<deutsch>
@@ -55,8 +54,8 @@
 		</kunstwerk>
 		<kunstwerk>
 			<id>2</id>
-			<minispiel-id>2</minispiel-id>
 			<position>3</position>
+			<minispiel-id>2</minispiel-id>
 			<bild>pic/pic2</bild>
 			<info>
 				<deutsch>
@@ -75,8 +74,8 @@
 		</kunstwerk>
 		<kunstwerk>
 			<id>3</id>
-			<minispiel-id>3</minispiel-id>
 			<position>2</position>
+			<minispiel-id>3</minispiel-id>
 			<bild>pic/pic3</bild>
 			<info>
 				<deutsch>
@@ -95,8 +94,8 @@
 		</kunstwerk>
 		<kunstwerk>
 			<id>4</id>
-			<minispiel-id>4</minispiel-id>
 			<position>4</position>
+			<minispiel-id>4</minispiel-id>
 			<bild>pic/pic4</bild>
 			<info>
 				<deutsch>
