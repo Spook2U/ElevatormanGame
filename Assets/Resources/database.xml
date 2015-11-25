@@ -1,12 +1,13 @@
 ﻿<!-- 
-	Sparache
+	Setting
 	sprache:		- Definiert eine weitere Sprache. Keine Umlaute, Sonderzeichen oder Leerzeichen
 					- In <info> Tags, Untertags mit dem hier definierten Namen erstellen.
 					- Es muss in jedem <info> Tag ein Untertag zu jeder Sprache vorhanden sein. 
 					  Die Tags können aber leer sein
 					- Wenn ein Tag unter <sprachen> entfernt wird, ist die Sprache nicht mehr verfügbar, 
 					  Untertags von <info> werden dann ignoriert
-
+	maxTipps:		Legt fest, wie viele Tipps, wie viele Tipps maximal gegeben werden, bevor die Tipps sich wiederholen
+	
 
 	Kunstwerke
 	id:				Wird nicht von der xml verwendet, kann benutzt werden, um Kunstwerke zu unterscheiden
@@ -20,17 +21,21 @@
 	id:				Nicht ändern
 	reihenfolge:  	Bestimmt, wann welches Ereignis angezeigt wird. Beginnend bei 1
 					Wenn mehrere Minispiele die gleiche Zahl haben, dann werden deise gleichzeitig angeziegt
-	text:			Text der von dem Aufzugman angezeigt wird, wenn der Spierl in die Nähe kommt
-	sync:			Sound, der passend zum Text angespielt wird, wenn nicht vorhanden, bleibt der Aufzugman stumm
-	tipps:
+	text:			Text der von dem Aufzugman angezeigt wird, wenn das Minispiel gestartet wurde
+	sync:			Link zum Sound, der angespielt werden soll. Ohne Dateiendung. Wenn leer, bleibt der Aufzugman stumm
+	fragen:			Beliebige Anzhl Fragen für das Minispiel, wenn keine Fragen vorhanden, werden keine gestellt.
+	tipps:			Beliebige Anzahl Tipps. Es werden von oben nach unten alle Tipps durchgelaufen, bis maxTipps erreicht wurde
 -->
 
 <data>
-	<sprachen>
-		<sprache>deutsch</sprache>
-		<sprache>englisch</sprache>
-		<sprache>niederlaendisch</sprache>
-	</sprachen>
+	<setting>
+		<sprachen>
+			<sprache>deutsch</sprache>
+			<sprache>englisch</sprache>
+			<sprache>niederlaendisch</sprache>
+		</sprachen>
+		<maxTipps>4</maxTipps>
+	</setting>
 	<kunstwerke>
 		<kunstwerk>
 			<id>1</id>
@@ -121,6 +126,11 @@
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
 					<sync>sync</sync>
+					<fragen>
+						<frage>d. Frage 1</frage>
+						<frage>d. Frage 2</frage>
+						<frage>d. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
@@ -130,6 +140,11 @@
 				<englisch>
 					<text>e Text</text>
 					<sync>e sync</sync>
+					<fragen>
+						<frage>e. Frage 1</frage>
+						<frage>e. Frage 2</frage>
+						<frage>e. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>e Tipp 1</tip>
 						<tip>e Tipp 2</tip>
@@ -139,6 +154,11 @@
 				<niederlaendisch>
 					<text>n Text</text>
 					<sync>n sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>n Tipp 1</tip>
 						<tip>n Tipp 2</tip>
@@ -154,6 +174,11 @@
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
 					<sync>sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
@@ -163,6 +188,11 @@
 				<englisch>
 					<text>e Text</text>
 					<sync>e sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>e Tipp 1</tip>
 						<tip>e Tipp 2</tip>
@@ -172,6 +202,11 @@
 				<niederlaendisch>
 					<text>n Text</text>
 					<sync>n sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>n Tipp 1</tip>
 						<tip>n Tipp 2</tip>
@@ -187,6 +222,11 @@
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
 					<sync>sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
@@ -196,6 +236,11 @@
 				<englisch>
 					<text>e Text</text>
 					<sync>e sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>e Tipp 1</tip>
 						<tip>e Tipp 2</tip>
@@ -205,6 +250,11 @@
 				<niederlaendisch>
 					<text>n Text</text>
 					<sync>n sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>n Tipp 1</tip>
 						<tip>n Tipp 2</tip>
@@ -220,6 +270,11 @@
 				<deutsch>
 					<text>Bei diesem Spiel musst die eigentlich gar nichts machen, nur auf ok klicken</text>
 					<sync>sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>Klicke auf Ok</tip>
 						<tip>Es gibt einen Button, auf dem Ok steht. Klicke ihn</tip>
@@ -229,6 +284,11 @@
 				<englisch>
 					<text>e Text</text>
 					<sync>e sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>e Tipp 1</tip>
 						<tip>e Tipp 2</tip>
@@ -238,6 +298,11 @@
 				<niederlaendisch>
 					<text>n Text</text>
 					<sync>n sync</sync>
+					<fragen>
+						<frage>n. Frage 1</frage>
+						<frage>n. Frage 2</frage>
+						<frage>n. Frage 3</frage>
+					</fragen>
 					<tipps>
 						<tip>n Tipp 1</tip>
 						<tip>n Tipp 2</tip>

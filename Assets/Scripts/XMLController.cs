@@ -4,7 +4,6 @@ using System.Xml;
 
 public class XMLController : MonoBehaviour 
 {
-	public int maxTipps;
 
 	XmlDocument xmlDoc;
 
@@ -15,6 +14,7 @@ public class XMLController : MonoBehaviour
 	Artwork[] artworks;
 	Games[]   games;
 
+	int maxTipps;
 	int[] tippIndices;
 
 
@@ -22,10 +22,10 @@ public class XMLController : MonoBehaviour
 	{
 		LoadXml("database");
 
+		//initilise tippIndices
 		tippIndices = new int[games.Length];
 		for(int i = 0; i < tippIndices.Length; i++) { tippIndices[i] = -1; }
 
-		if(maxTipps == 0) maxTipps = 1;
 	}
 
 
@@ -40,6 +40,8 @@ public class XMLController : MonoBehaviour
 		languagesNode = xmlDoc.GetElementsByTagName("sprachen")  .Item(0).ChildNodes;
 		artworksNode  = xmlDoc.GetElementsByTagName("kunstwerke").Item(0).ChildNodes;
 		gamesNode     = xmlDoc.GetElementsByTagName("minispiele").Item(0).ChildNodes;
+
+		maxTipps      = int.Parse(xmlDoc.GetElementsByTagName("maxTipps").Item(0).InnerText);
 
 		PlayerPrefs.SetInt("LanguagesCount", getLanguages().Length);
 
@@ -152,7 +154,7 @@ public class XMLController : MonoBehaviour
 		return games[i].GetSync(language);
 	}
 
-	public string GetGame_NextTipp(int gameId, int language)
+	public string[] GetGame_Questions(int gameId, int language)
 	{
 		int i = 0;
 		for(i = 0; i < games.Length; i++)
@@ -160,9 +162,26 @@ public class XMLController : MonoBehaviour
 			if(games[i].id == gameId) break;
 		}
 
+		return games[i].GetQuestions(language);
+	}
+
+	public string GetGame_NextTipp(int gameId, int language)
+	{
+		int i = 0;
+		string[] tipps = games[i].GetTipps(language);
+
+		for(i = 0; i < games.Length; i++)
+		{
+			if(games[i].id == gameId) break;
+		}
+
+		//nur so viele Tipps anzeigen, wie maxTipps. Tipps werden geloopt
 		tippIndices[gameId] = (tippIndices[gameId] += 1) % maxTipps;
 
-		return games[i].GetTipp(language)[tippIndices[gameId]];
+		//abfangen, falls weniger als maxTipps vorhanden sind.
+		if(tippIndices[gameId] == tipps.Length) tippIndices[gameId] = 0;
+
+		return tipps[tippIndices[gameId]];
 	}
 }
 
@@ -228,15 +247,17 @@ class Games
 		}
 	}
 
-	public string   GetText(int sprache) { return info[sprache].text; }
-	public string   GetSync(int sprache) { return info[sprache].sync; }
-	public string[] GetTipp(int sprache) { return info[sprache].tipps;}
+	public string   GetText(int sprache)      { return info[sprache].text; }
+	public string   GetSync(int sprache)      { return info[sprache].sync; }
+	public string[] GetQuestions(int sprache) { return info[sprache].tipps;}
+	public string[] GetTipps(int sprache)     { return info[sprache].tipps;}
 }
 
 class Info
 {
 	public string text;
 	public string sync;
+	public string[] questions;
 	public string[] tipps;
 
 	public Info(XmlNodeList list)
@@ -247,6 +268,17 @@ class Info
 			{
 				case "text": text = list.Item(i).InnerText; break;
 				case "sync": sync = list.Item(i).InnerText; break;
+				case "fragen":
+				{
+					XmlNodeList questionNode = list.Item(i).ChildNodes;
+					questions = new string[questionNode.Count];
+					
+					for(int j = 0; j < questionNode.Count; j++)
+					{
+						questions[j] = questionNode.Item(j).InnerText;
+					}
+				}
+				break;
 				case "tipps":
 				{
 					XmlNodeList tippsNode = list.Item(i).ChildNodes;
